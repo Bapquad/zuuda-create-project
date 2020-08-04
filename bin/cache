@@ -1,0 +1,14 @@
+TYPE="template"
+echo "Choose the cache type for clear:"
+echo "1) Template"
+echo "2) Database"
+echo "3) Upload Temp"
+echo "4) Cancel"
+read TYPE
+case $TYPE in 
+	"1") php zuuda cache:clear template;;
+	"2") php zuuda cache:clear database;;
+	"3") php zuuda cache:clear upload-temp;;
+	"4") echo "Canceled";;
+	*) echo "You choosen Unknown";;
+esac

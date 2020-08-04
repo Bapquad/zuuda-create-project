@@ -1,0 +1,19 @@
+echo "-------------------------"
+echo "Zuuda Framework Options:"
+echo "1) Run server" 
+echo "2) Clear cache"
+echo "3) Update Zuuda"
+echo "Extra Framework options"
+echo "4) Zuuda ComSite"
+echo "5) Redis Server"
+echo "6) Cancel or Press ^C"
+read CHOOSE
+case $CHOOSE in 
+	"1") bin/start ;; 
+	"2") bin/cache;;
+	"3") bin/update ;;
+	"4") npm start ;;
+	"5") redis-server ;;
+	"6") echo "Escaped, Gook luck." ;;
+	*) echo "Sorry, That's unknown option." ;;
+esac 

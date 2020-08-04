@@ -1,0 +1,63 @@
+<?php 
+require_once __DIR__ . "/bootstrap.php";
+if(isset($argv[1])) 
+{ 
+	if('--help'===$argv[1]) 
+	{ 
+		echo "You can try below options:".NL; 
+		echo "Run a server".NL;
+		echo "	php zuuda serve [port]".NL.NL; 
+		echo "Clear cache".NL; 
+		echo "	php zuuda cache:clear [option]".NL; 
+		echo "The cache:clear option has \"template\" and \"database\"".NL.NL;
+		echo "Run a menu".NL; 
+		echo "	php zuuda".NL; 
+		echo "	php zuuda menu".NL.NL; 
+		echo "Or update the Zuuda Core".nl;
+		echo "	php zuuda update".nl.nl;
+		echo "Thank you! for using Zuuda Framework.".NL; 
+	} 
+	else if('serve'===$argv[1]) 
+	{ 
+		if( isset($argv[2]) ) 
+		{ 
+			system('sh bin/start ' . $argv[2]); 
+		} 
+		else 
+		{
+			system('sh bin/start');
+		}
+	} 		
+	else if('cache:clear'===$argv[1]) 
+	{ 
+		if( isset($argv[2]) ) 
+		{
+			Zuuda\Cache::clear($argv[2]);
+			echo "Cache clear done!".NL;
+		} 
+		else 
+		{ 
+			echo "You missed the what to clear option. Let's use".NL; 
+			echo "php zuuda cache:clear target".NL;
+			echo "The target: [database] or [template]".NL;
+		} 
+	} 
+	else if('menu'===$argv[1]) 
+	{ 
+		system('sh bin/menu');
+	} 
+	else if('update'===$argv[1]) 
+	{ 
+		system('sh bin/update');
+	} 
+	else 
+	{ 
+		echo "Unknown comand: {$argv[1]}".NL; 
+		echo "Type: ".NL."	php zuuda --help".NL."For the help";
+	} 
+} 
+else 
+{ 
+	system('sh bin/menu');
+} 
+exit;

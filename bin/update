@@ -1,0 +1,11 @@
+BRANCH=1
+echo "Choose the your preferrence: "
+echo "1) Using the composer (default)"
+echo "2) Updates Zuuda version (Be careful)"
+read BRANCH
+echo "Processing! please wait, it maybe take a bit of time."
+if [ "$BRANCH" = "2" ]; then
+	git -C vendor/bapquad/Zuuda pull origin master
+else 
+	composer update 
+fi 

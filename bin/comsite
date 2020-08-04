@@ -1,0 +1,31 @@
+const socket = require('socket.io')(3000) 
+console.log("Socket server had start at the port 3000.");
+socket.on('connection', (socket) => {
+	socket.on('news', (data) => {
+		console.log("Client ("+socket.id+") requires the news.") 
+		console.log(data);
+	}) 
+	
+	socket.on('join-to-chat', (data) => {
+		socket.join(data.room, () => {
+			let msg = data.username + ' has joined the room' 
+			socket.emit('my-message', msg); 						// privacy message.
+			socket.to(data.room).emit('my-message', msg); 			// broadcast to everyone in the room
+		});
+	}) 
+	
+	socket.on('room-message', (data) => { 
+		let msg = '<strong>' + data.username + '</strong>' + ":" + data.msg
+		socket.emit('my-message', msg)	 							// privacy message.
+		socket.to(data.room).emit('my-message', msg)  				// broadcast to everyone in the room
+	}) 
+	
+	socket.on('leave-message', (data) => {
+		socket.to(data.room).emit('my-message', data.username + ' had left the room')  		// broadcast to everyone in the room
+		socket.leave(data.room) 
+	})
+	
+	socket.on('disconnect', (reason) => {
+		console.log("A client ("+socket.id+") disconnect to socket.");
+	}) 
+}) 

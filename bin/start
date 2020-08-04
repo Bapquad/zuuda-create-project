@@ -1,0 +1,16 @@
+# Start server with build-in php server.
+echo "Zuuda Server Starter 1.0"
+SVR_HOST=8000
+HOST=$SVR_HOST
+if [ -n "$1" ]
+then
+	SVR_HOST=$1
+else
+	echo "The port (defautl:8000):"
+	read HOST
+	if [ -n "$HOST" ]; then 
+		SVR_HOST=$HOST
+	fi
+fi
+echo Running on port $SVR_HOST ...
+php -S localhost:$SVR_HOST server.php

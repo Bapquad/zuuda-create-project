@@ -1,0 +1,22 @@
+{
+    "name": "bapquad/zuuda-create-project",
+    "description": "PHP framework creator",
+    "require": {
+        "php": ">=7.2.0",
+        "ext-json": "*",
+        "ext-intl": "*",
+        "ext-mbstring": "*",
+        "bapquad/zuuda": "v1.1.0.x-dev",
+	    "larapack/dd": "1.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~8.5.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "mrcookie",
+            "email": "mrcookiedev@gmail.com"
+        }
+    ]
+}
