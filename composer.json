@@ -6,7 +6,7 @@
         "ext-json": "*",
         "ext-intl": "*",
         "ext-mbstring": "*",
-        "bapquad/zuuda": "v1.1.0.x-dev",
+        "bapquad/zuuda": "1.0.*",
 	    "larapack/dd": "1.*"
     },
     "require-dev": {
