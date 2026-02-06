@@ -1,4 +1,5 @@
 <?php
+include_once( __DIR__.'/bootstrap.php' );
 // php -S localhost:8000 server.php
 function rewrite() 
 {
@@ -62,4 +63,3 @@ else
 		}
 	}
 }
-include_once( __DIR__.'/bootstrap.php' );
