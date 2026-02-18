@@ -21,6 +21,7 @@ function callback_config_to_symbol()
 $_CONFIG = &$configs;
 $_config = &$configs;
 $_configs = &$configs;
+$_GET['url'] = $uri = urldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)); 
 function callback_autoload_to_symbol( $char ) 
 {
 	__dispatch_autoload_class_file( $char );
@@ -54,4 +55,5 @@ callback_config_to_symbol();
 require_once($autoload_filepath);
 require_once($symbol_filepath);
 callback_symbol_to_routes(); 
+
 require_once($routes_filepath);
