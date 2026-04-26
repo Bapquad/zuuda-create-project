@@ -19,6 +19,7 @@ $configs = array(
 	'APP_NAME'	=> "Zuuda Project Creator", 
 	'SOLOGAN'	=> "Zuuda PHP Framework Project Creator", 
 	'APP_PATH'	=> "/", 
+	
 /**
  * When config MEDIA directory, like as allow uploading.
  */
@@ -37,4 +38,8 @@ $configs = array(
 		"query"		=> 'sha1'
 	), 
 	
+/**
+ * Config the data base, it use mysql database.
+ */
+	'DATASOURCE' => NULL,
 ); 
