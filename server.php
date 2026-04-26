@@ -1,4 +1,5 @@
 <?php
+include_once( __DIR__.'/bootstrap.php' );
 // php -S localhost:8000 server.php
 function rewrite() 
 {
@@ -14,9 +15,9 @@ function rewrite()
 	}
 }
 $_GET['url'] = $uri = urldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)); 
-if( is_dir('.'.$uri) ) 
+if( is_dir('.'.$uri) && is_file($rewrite = rewrite()) ) 
 {
-	include rewrite();
+	include $rewrite;
 }
 else 
 {
@@ -31,10 +32,12 @@ else
 			substr(basename($scriptFile), 0, 1) != '.' ) 
 		{
 			$scriptExts = strtolower(substr($scriptFile, -4));
-			if( $scriptExts==='.php' ) 
+			if( $scriptExts==='.php' ) {
 				include $scriptFile; 	// php file; serve through interpreter
-			else 
+			}
+			else {
 				return false;			// asset file; serve from filesystem
+			}
 		} 
 		else 
 		{
@@ -55,6 +58,8 @@ else
 				$uri = $dirs_r; 
 			} 
 		} 
-		include rewrite();
+		if(is_file($rewrite)) {
+			include $rewrite;
+		}
 	}
 }
